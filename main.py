@@ -1,3 +1,4 @@
+# fmt: off
 import sqlite3
 con = sqlite3.connect("tutorial.db")
 cur = con.cursor()
@@ -35,6 +36,24 @@ CREATE TABLE IF NOT EXISTS resource_references (
   created_at INTEGER NOT NULL,
   updated_at INTEGER NOT NULL,
   UNIQUE(resource_list_id, resource_id)
+);
+""")
+
+cur.execute("DROP TABLE IF EXISTS announcement;")
+cur.execute("""
+CREATE TABLE IF NOT EXISTS announcement (
+  announcement_id INTEGER PRIMARY KEY,
+);
+""")
+
+cur.execute("DROP TABLE IF EXISTS event;")
+cur.execute("""
+CREATE TABLE IF NOT EXISTS event (
+  event_id INTEGER PRIMARY KEY,
+  start_date_time INTEGER NOT NULL,
+  end_date_time INTEGER NOT NULL,
+  location TEXT NOT NULL,
+  team_name TEXT NOT NULL,
 );
 """)
 
@@ -107,4 +126,3 @@ ORDER BY resource_references.index_in_resource_list;
 REORDER_RESOURCE_LIST_QUERY = """
 UPDATE resource_references SET resource_id = ? WHERE resource_list_id = ? AND resource_id = ?;
 """
-
