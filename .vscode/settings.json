@@ -1,0 +1,11 @@
+{
+  "sqltools.useNodeRuntime": true,
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "api.acmcsuf.com dev",
+      "database": "${workspaceFolder:api.acmcsuf.com-sql}/tutorial.db"
+    }
+  ]
+}
